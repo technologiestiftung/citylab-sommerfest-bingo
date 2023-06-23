@@ -1,26 +1,12 @@
 /// <reference types="types-for-adobe/InDesign/2018"/>
-
-const numberOfPages = 25;
+// @include "lib/unique-numbers.js"
+// @include "lib/json2.js"
+const numberOfPages = 1;
 const maxRandom = 75;
 const numbersOnPage = 25;
 const numberPointSize = 30;
 const scriptPath = new File($.fileName).path;
 const dejaVuSans = "DejaVu Sans\tBold";
-function generateUniqueRandomNumbers(len: number): number[] {
-	let arr: number[] = [];
-	while (arr.length < len) {
-		let r = Math.floor(Math.random() * 75) + 1;
-		let exists = false;
-		for (let i = 0; i < arr.length; i++) {
-			if (arr[i] === r) {
-				exists = true;
-				break;
-			}
-		}
-		if (!exists) arr.push(r);
-	}
-	return arr;
-}
 
 app.viewPreferences.horizontalMeasurementUnits = MeasurementUnits.MILLIMETERS;
 app.viewPreferences.verticalMeasurementUnits = MeasurementUnits.MILLIMETERS;
@@ -37,6 +23,12 @@ const docProps = {
 	},
 };
 const doc = app.documents.add(true, undefined, docProps);
+// const strokeStyles = [];
+// for (let i = 0; i < doc.strokeStyles.count(); i++) {
+// 	strokeStyles.push({ id: i, name: doc.strokeStyles.item(i).name });
+// }
+
+// alert(JSON.stringify(strokeStyles));
 
 const pageProps = {
 	marginPreferences: {
@@ -50,9 +42,11 @@ const defaultPage = doc.pages[0];
 
 const objectStyleTextFrame = doc.objectStyles.add({
 	name: "Bingo-Number",
-	strokeWeight: 1,
+	strokeWeight: 0.5,
 	strokeColor: doc.swatches.item("Black"),
 	strokeTint: 75,
+	strokeType: doc.strokeStyles.item(13),
+
 	bottomLeftCornerOption: CornerOptions.FANCY_CORNER,
 	bottomRightCornerOption: CornerOptions.FANCY_CORNER,
 	topLeftCornerOption: CornerOptions.FANCY_CORNER,
@@ -125,13 +119,29 @@ for (let _index = 0; _index < numberOfPages; _index++) {
 	const isCenter = (idx: number): boolean => {
 		return idx === 12;
 	};
+	const stars = [];
 	for (let i = 0; i < numbers.length; i++) {
 		let x = pageProps.marginPreferences.left + ((i % 5) * widthGutter) / 5;
 		let y =
 			pageProps.marginPreferences.top + (Math.floor(i / 5) * heightGutter) / 5;
 		let w = widthGutter / 5;
 		let h = heightGutter / 5;
-
+		// if (i % 5 !== 0) {
+		// 	const star = page.textFrames.add(layer, undefined, undefined, {
+		// 		geometricBounds: [y - 10, x - 10, y + 10, x + 10],
+		// 		contents: "\u2605",
+		// 		textFramePreferences: {
+		// 			verticalJustification: VerticalJustification.CENTER_ALIGN,
+		// 		},
+		// 	});
+		// 	star.paragraphs[0].properties = {
+		// 		appliedFont: dejaVuSans,
+		// 		pointSize: 32 + (Math.random() * 20 - 10),
+		// 		justification: Justification.CENTER_JUSTIFIED,
+		// 	};
+		// 	star.fit(FitOptions.CONTENT_TO_FRAME);
+		// 	stars.push(star);
+		// }
 		const textFrame = page.textFrames.add(layer, undefined, undefined, {
 			geometricBounds: [y, x, y + h, x + w],
 			// U+2605 is a star
@@ -145,13 +155,23 @@ for (let _index = 0; _index < numberOfPages; _index++) {
 			appliedObjectStyle: objectStyleTextFrame,
 		});
 
+		textFrame.bottomLeftCornerRadius = 5 + Math.random() * 10;
+		textFrame.bottomRightCornerRadius = 5 + Math.random() * 10;
+		textFrame.topLeftCornerRadius = 5 + Math.random() * 10;
+		textFrame.topRightCornerRadius = 5 + Math.random() * 10;
+		// textFrame.bottomLeftCornerOption = CornerOptions.ROUNDED_CORNER;
+		// textFrame.topLeftCornerOption = CornerOptions.INVERSE_ROUNDED_CORNER;
+		textFrame.topRightCornerOption = CornerOptions.ROUNDED_CORNER;
 		const paragraph = textFrame.paragraphs[0];
 		paragraph.properties = {
-			appliedFont: isCenter(i) ? "DejaVu Sans\tBold" : "National\tBold Italic",
+			appliedFont: isCenter(i) ? dejaVuSans : "National\tBold Italic",
 			pointSize: isCenter(i) ? numberPointSize * 2 : numberPointSize,
 			fillColor: doc.swatches.item("Black"),
 			justification: Justification.CENTER_JUSTIFIED,
 		};
+	}
+	for (let s = 0; s < stars.length; s++) {
+		stars[s].bringToFront();
 	}
 }
 defaultPage.remove();

@@ -8,7 +8,8 @@
 		"module": "none",
 		"noLib": true,
 		"outDir": "dist",
-		"removeComments": true,
+		"allowJs": true,
+		"removeComments": false,
 		"typeRoots": [
 			"./node_modules/@types",
 			"./types",
