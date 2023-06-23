@@ -26,12 +26,12 @@ var docProps = {
     documentPreferences: {
         pageWidth: 210,
         pageHeight: 297,
-        facingPages: false,
+        facingPages: false
     },
     viewPreferences: {
         horizontalMeasurementUnits: MeasurementUnits.MILLIMETERS,
-        verticalMeasurementUnits: MeasurementUnits.MILLIMETERS,
-    },
+        verticalMeasurementUnits: MeasurementUnits.MILLIMETERS
+    }
 };
 var doc = app.documents.add(true, undefined, docProps);
 var pageProps = {
@@ -39,8 +39,8 @@ var pageProps = {
         top: 30,
         left: 10,
         bottom: 30,
-        right: 10,
-    },
+        right: 10
+    }
 };
 var defaultPage = doc.pages[0];
 var objectStyleTextFrame = doc.objectStyles.add({
@@ -51,7 +51,7 @@ var objectStyleTextFrame = doc.objectStyles.add({
     bottomLeftCornerOption: CornerOptions.FANCY_CORNER,
     bottomRightCornerOption: CornerOptions.FANCY_CORNER,
     topLeftCornerOption: CornerOptions.FANCY_CORNER,
-    topRightCornerOption: CornerOptions.FANCY_CORNER,
+    topRightCornerOption: CornerOptions.FANCY_CORNER
 });
 var masterSpread = doc.masterSpreads.add(1, { name: "Bingo-Master" });
 var masterPage = masterSpread.pages.item(0);
@@ -71,19 +71,19 @@ var masterFrame = masterPage.textFrames.add(undefined, undefined, undefined, {
     ],
     contents: "\u2605 Sommerfest Bingo",
     textFramePreferences: {
-        verticalJustification: VerticalJustification.CENTER_ALIGN,
-    },
+        verticalJustification: VerticalJustification.CENTER_ALIGN
+    }
 });
 masterFrame.paragraphs[0].properties = {
     appliedFont: "National\tBold Italic",
     pointSize: 24,
     fillColor: doc.swatches.item("Black"),
-    justification: Justification.LEFT_ALIGN,
+    justification: Justification.LEFT_ALIGN
 };
 masterFrame.paragraphs[0].characters.item(0).properties = {
     appliedFont: dejaVuSans,
     pointSize: 24,
-    fillColor: doc.swatches.item("Black"),
+    fillColor: doc.swatches.item("Black")
 };
 var logo = masterPage.rectangles.add(undefined, undefined, undefined, {
     appliedObjectStyle: doc.objectStyles.item(0),
@@ -95,7 +95,7 @@ var logo = masterPage.rectangles.add(undefined, undefined, undefined, {
             25,
         docProps.documentPreferences.pageHeight,
         docProps.documentPreferences.pageWidth - pageProps.marginPreferences.right,
-    ],
+    ]
 });
 logo.place(File(scriptPath + "/../assets/logo-citylab-berlin-outline.svg"));
 logo.fit(FitOptions.CENTER_CONTENT);
@@ -117,16 +117,16 @@ for (var _index = 0; _index < numberOfPages; _index++) {
             geometricBounds: [y, x, y + h, x + w],
             contents: isCenter(i) ? "\u2605" : numbers[i].toString(),
             textFramePreferences: {
-                verticalJustification: VerticalJustification.CENTER_ALIGN,
+                verticalJustification: VerticalJustification.CENTER_ALIGN
             },
-            appliedObjectStyle: objectStyleTextFrame,
+            appliedObjectStyle: objectStyleTextFrame
         });
         var paragraph = textFrame.paragraphs[0];
         paragraph.properties = {
             appliedFont: isCenter(i) ? "DejaVu Sans\tBold" : "National\tBold Italic",
             pointSize: isCenter(i) ? numberPointSize * 2 : numberPointSize,
             fillColor: doc.swatches.item("Black"),
-            justification: Justification.CENTER_JUSTIFIED,
+            justification: Justification.CENTER_JUSTIFIED
         };
     }
 }

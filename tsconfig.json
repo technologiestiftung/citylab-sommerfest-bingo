@@ -3,6 +3,8 @@
 		"src/**/*"
 	],
 	"compilerOptions": {
+		"target": "ES3",
+		"ignoreDeprecations": "5.0",
 		"module": "none",
 		"noLib": true,
 		"outDir": "dist",

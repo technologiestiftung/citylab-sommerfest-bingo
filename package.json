@@ -4,7 +4,7 @@
 	"description": "InDesign script for creating bingo cards",
 	"scripts": {
 		"dev": "tsc -w",
-		"build": "tsc"
+		"build": "tsc -p ."
 	},
 	"keywords": [],
 	"author": "ff6347 <hash@ff6347.email>",
