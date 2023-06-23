@@ -1,7 +1,9 @@
 ![](https://img.shields.io/badge/Built%20with%20%E2%9D%A4%EF%B8%8F-at%20Technologiestiftung%20Berlin-blue)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # CityLAB Sommerfest Bingo 2023
@@ -33,6 +35,13 @@ Edit the script in `src/index.ts`. Execute the script from the Scripts Panel.
 
 - Use `dist/close-all-docs.js` to close all open documents in InDesign without saving.
 - Use `dist/font-list.js` to get all fonts on your computer and their names. The output file will be dumped on the desktop. The script might freeze InDesign for a while.
+
+## Resources
+
+For further DOM API definitions and sample scripts see:
+
+- https://www.indesignjs.de/extendscriptAPI/indesign-latest/#about.html
+- https://github.com/ExtendScript/wiki/wiki
 
 ## Contributing
 
