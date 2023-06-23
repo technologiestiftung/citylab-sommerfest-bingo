@@ -6,60 +6,35 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# {repo-template}
+# CityLAB Sommerfest Bingo 2023
 
-## TODO (after you generated the repo)
+A small InDesign script to generate bingo cards for the CityLAB Sommerfest 2023.
 
-- [ ] Review the content of the README.md and adjust to your liking
-- [ ] Read the README.md till the end and adjust the content licensing,
-      logos, etc (I know you stopped at tbd...)
-- [ ] Adjust the file [.github/CODEOWNERS](./.github/CODEOWNERS)
-- [ ] Adjust the files under [.github/ISSUE_TEMPLATE](./.github/ISSUE_TEMPLATE)
-- [ ] If you use staging and main branches use this template for [.github/renovate.json](./.github/renovate.json)
+## Usage
 
-```json
-{
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["github>technologiestiftung/renovate-config"],
-	"baseBranches": ["staging"]
-}
-```
-
-- [ ] Do you want to honor all kinds of contributions? Use [all-contributors](https://allcontributors.org/)
+clone the repo to your ScriptsPanel folder
 
 ```bash
-npx all-contributors-cli check
-npx all-contributors-cli add ff6347 doc
+git clone git@github.com:technologiestiftung/citylab-sommerfest-bingo.git "~/Library/Preferences/Adobe InDesign/Version 18.0/en_US/Scripts/Scripts Panel/citylab-sommerfest-bingo"
 ```
 
-You can use it on GitHub just by commenting on PRs and issues:
-
-```plain
-@all-contributors please add @ff6347 for infrastructure, tests and code
-```
-
-- [ ] Add your project description
-- [ ] Get fancy shields at https://shields.io
-
-## Prerequisites
-
-tbd...
-
-## Installation
-
-tbd...
-
-## Usage or Deployment
-
-tbd...
+Open InDesign and run the script `dist/index.js` from the Scripts Panel.
 
 ## Development
 
-tbd...
+Install dependencies and run `tsc` script in watch mode.
 
-## Tests
+```bash
+npm ci
+npm run dev
+```
 
-tbd...
+Edit the script in `src/index.ts`. Execute the script from the Scripts Panel.
+
+## Helper scripts
+
+- Use `dist/close-all-docs.js` to close all open documents in InDesign without saving.
+- Use `dist/font-list.js` to get all fonts on your computer and their names. The output file will be dumped on the desktop. The script might freeze InDesign for a while.
 
 ## Contributing
 
@@ -87,8 +62,6 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 ## Content Licensing
 
 Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3.0/de/).
-
-Illustrations by {MARIA_MUSTERFRAU}, all rights reserved.
 
 ## Credits
 
