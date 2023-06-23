@@ -1,7 +1,6 @@
-var numberOfPages = 25;
+var numberOfPages = 1;
 var maxRandom = 75;
 var numbersOnPage = 25;
-var numberPointSize = 30;
 var scriptPath = new File($.fileName).path;
 var dejaVuSans = "DejaVu Sans\tBold";
 function generateUniqueRandomNumbers(len) {
@@ -62,9 +61,9 @@ var widthGutter = parseInt(doc.documentPreferences.pageWidth) -
 var heightGutter = parseInt(doc.documentPreferences.pageHeight) -
     pageProps.marginPreferences.top -
     pageProps.marginPreferences.bottom;
-var masterFrame = masterPage.textFrames.add(undefined, undefined, undefined, {
+var masterFrame = (masterPage.textFrames.add(undefined, undefined, undefined, {
     geometricBounds: [
-        0,
+        pageProps.marginPreferences.top - pageProps.marginPreferences.top / 2,
         pageProps.marginPreferences.left,
         pageProps.marginPreferences.top,
         pageProps.marginPreferences.left + widthGutter,
@@ -73,13 +72,14 @@ var masterFrame = masterPage.textFrames.add(undefined, undefined, undefined, {
     textFramePreferences: {
         verticalJustification: VerticalJustification.CENTER_ALIGN,
     },
-});
-masterFrame.paragraphs[0].properties = {
+})
+
+paragraphs[0].properties = {
     appliedFont: "National\tBold Italic",
     pointSize: 24,
     fillColor: doc.swatches.item("Black"),
     justification: Justification.LEFT_ALIGN,
-};
+});
 masterFrame.paragraphs[0].characters.item(0).properties = {
     appliedFont: dejaVuSans,
     pointSize: 24,
@@ -91,7 +91,7 @@ var logo = masterPage.rectangles.add(undefined, undefined, undefined, {
         docProps.documentPreferences.pageHeight -
             pageProps.marginPreferences.bottom,
         docProps.documentPreferences.pageWidth -
-            pageProps.marginPreferences.right * 4 -
+            pageProps.marginPreferences.right * 5 -
             25,
         docProps.documentPreferences.pageHeight,
         docProps.documentPreferences.pageWidth - pageProps.marginPreferences.right,
@@ -124,7 +124,7 @@ for (var _index = 0; _index < numberOfPages; _index++) {
         var paragraph = textFrame.paragraphs[0];
         paragraph.properties = {
             appliedFont: isCenter(i) ? "DejaVu Sans\tBold" : "National\tBold Italic",
-            pointSize: isCenter(i) ? numberPointSize * 2 : numberPointSize,
+            pointSize: isCenter(i) ? 100 : 50,
             fillColor: doc.swatches.item("Black"),
             justification: Justification.CENTER_JUSTIFIED,
         };
