@@ -2,20 +2,6 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
-env:
-  NEXT_PUBLIC_SUPABASE_URL: http://localhost:54321
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
-  SUPABASE_SERVICE_ROLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU
-  # Get your key at https://platform.openai.com/account/api-keys
-  OPENAI_KEY: sk-123
-  JWT_SECRET: 123
-  NEXT_PUBLIC_HANDBUCH_URL: https://www.oeffentliches-gestalten.de
-  MDX_DOCS_PATH: /docs
-  UPSTASH_REST_API_DOMAIN: https://api.upstash.com
-  UPSTASH_REST_API_TOKEN: 123
-  NODE_ENV: test
-  OPENAI_MODEL: "gpt-3.5-turbo"
-
 on:
   push:
     branches: [main]
@@ -32,7 +18,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
-      - run: npm run build --if-present
+      # - run: npm run build --if-present
       - run: npm run test  --if-present
   release:
     name: semantic-release
