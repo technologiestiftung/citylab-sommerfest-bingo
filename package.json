@@ -1,15 +1,16 @@
 {
-	"name": "citylab-sommerfest-bingo",
+	"name": "@technologiestiftung/citylab-sommerfest-bingo",
 	"version": "0.1.0",
-	"description": "",
-	"main": "index.js",
+	"description": "InDesign script for creating bingo cards",
 	"scripts": {
-		"dev": "tsc -w"
+		"dev": "tsc -w",
+		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "ff6347 <hash@ff6347.email>",
 	"license": "MIT",
 	"devDependencies": {
+		"@technologiestiftung/semantic-release-config": "1.2.1",
 		"types-for-adobe": "7.0.12",
 		"typescript": "5.1.3"
 	}
