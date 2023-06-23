@@ -1,0 +1,16 @@
+{
+	"name": "citylab-sommerfest-bingo",
+	"version": "0.1.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "tsc -w"
+	},
+	"keywords": [],
+	"author": "ff6347 <hash@ff6347.email>",
+	"license": "MIT",
+	"devDependencies": {
+		"types-for-adobe": "7.0.12",
+		"typescript": "5.1.3"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"include": [
+		"src/**/*"
+	],
+	"compilerOptions": {
+		"module": "none",
+		"noLib": true,
+		"outDir": "dist",
+		"removeComments": true,
+		"typeRoots": [
+			"./node_modules/@types",
+			"./types"
+		],
+	}
+}
