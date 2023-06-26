@@ -135,9 +135,9 @@ for (let _index = 0; _index < numberOfPages; _index++) {
 		return idx === 12;
 	};
 	for (let i = 0; i < numbers.length; i++) {
-		let x = pageProps.marginPreferences.left + ((i % 5) * widthGutter) / 5;
-		let y =
-			pageProps.marginPreferences.top + (Math.floor(i / 5) * heightGutter) / 5;
+		let x =
+			pageProps.marginPreferences.left + (Math.floor(i / 5) * widthGutter) / 5;
+		let y = pageProps.marginPreferences.top + ((i % 5) * heightGutter) / 5;
 		let w = widthGutter / 5;
 		let h = heightGutter / 5;
 

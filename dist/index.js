@@ -117,8 +117,8 @@ for (var _index = 0; _index < numberOfPages; _index++) {
         return idx === 12;
     };
     for (var i = 0; i < numbers.length; i++) {
-        var x = pageProps.marginPreferences.left + ((i % 5) * widthGutter) / 5;
-        var y = pageProps.marginPreferences.top + (Math.floor(i / 5) * heightGutter) / 5;
+        var x = pageProps.marginPreferences.left + (Math.floor(i / 5) * widthGutter) / 5;
+        var y = pageProps.marginPreferences.top + ((i % 5) * heightGutter) / 5;
         var w = widthGutter / 5;
         var h = heightGutter / 5;
         var textFrame = page.textFrames.add(layer, undefined, undefined, {
