@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/technologiestiftung/citylab-sommerfest-bingo/compare/v1.1.0...v1.1.1) (2023-06-26)
+
+
+### Bug Fixes
+
+* Now with columns instad of rows ([5ae69c0](https://github.com/technologiestiftung/citylab-sommerfest-bingo/commit/5ae69c00b7045494581a64eaf4436e697fb7d483))
+
 # [1.1.0](https://github.com/technologiestiftung/citylab-sommerfest-bingo/compare/v1.0.0...v1.1.0) (2023-06-26)
 
 
