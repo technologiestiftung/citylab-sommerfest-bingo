@@ -1,13 +1,21 @@
-var numberOfPages = 25;
-var maxRandom = 75;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var numberOfPages = 50;
 var numbersOnPage = 25;
 var numberPointSize = 30;
 var scriptPath = new File($.fileName).path;
 var dejaVuSans = "DejaVu Sans\tBold";
-function generateUniqueRandomNumbers(len) {
+function generateUniqueRandomNumbers(len, min, max) {
     var arr = [];
     while (arr.length < len) {
-        var r = Math.floor(Math.random() * 75) + 1;
+        var r = Math.floor(Math.random() * (max - min + 1)) + min;
         var exists = false;
         for (var i = 0; i < arr.length; i++) {
             if (arr[i] === r) {
@@ -104,7 +112,7 @@ for (var _index = 0; _index < numberOfPages; _index++) {
     var page = doc.pages.add();
     page.appliedMaster = masterSpread;
     var layer = doc.layers[0];
-    var numbers = generateUniqueRandomNumbers(numbersOnPage);
+    var numbers = __spreadArray(__spreadArray(__spreadArray(__spreadArray(__spreadArray([], generateUniqueRandomNumbers(numbersOnPage / 5, 1, 15), true), generateUniqueRandomNumbers(numbersOnPage / 5, 16, 30), true), generateUniqueRandomNumbers(numbersOnPage / 5, 31, 45), true), generateUniqueRandomNumbers(numbersOnPage / 5, 46, 60), true), generateUniqueRandomNumbers(numbersOnPage / 5, 61, 75), true);
     var isCenter = function (idx) {
         return idx === 12;
     };

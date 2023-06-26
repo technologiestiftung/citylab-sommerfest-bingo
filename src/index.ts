@@ -1,15 +1,18 @@
 /// <reference types="types-for-adobe/InDesign/2018"/>
 
-const numberOfPages = 25;
-const maxRandom = 75;
+const numberOfPages = 50;
 const numbersOnPage = 25;
 const numberPointSize = 30;
 const scriptPath = new File($.fileName).path;
 const dejaVuSans = "DejaVu Sans\tBold";
-function generateUniqueRandomNumbers(len: number): number[] {
+function generateUniqueRandomNumbers(
+	len: number,
+	min: number,
+	max: number
+): number[] {
 	let arr: number[] = [];
 	while (arr.length < len) {
-		let r = Math.floor(Math.random() * 75) + 1;
+		let r = Math.floor(Math.random() * (max - min + 1)) + min;
 		let exists = false;
 		for (let i = 0; i < arr.length; i++) {
 			if (arr[i] === r) {
@@ -121,7 +124,13 @@ for (let _index = 0; _index < numberOfPages; _index++) {
 	const layer = doc.layers[0];
 
 	// Create the numbers
-	const numbers = generateUniqueRandomNumbers(numbersOnPage);
+	const numbers = [
+		...generateUniqueRandomNumbers(numbersOnPage / 5, 1, 15),
+		...generateUniqueRandomNumbers(numbersOnPage / 5, 16, 30),
+		...generateUniqueRandomNumbers(numbersOnPage / 5, 31, 45),
+		...generateUniqueRandomNumbers(numbersOnPage / 5, 46, 60),
+		...generateUniqueRandomNumbers(numbersOnPage / 5, 61, 75),
+	];
 	const isCenter = (idx: number): boolean => {
 		return idx === 12;
 	};
